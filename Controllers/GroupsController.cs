@@ -6,8 +6,8 @@ using System.Net.Http;
 using System.Web.Http;
 using System.Threading;
 using System.Web.Http.Filters;
-using WebResponse = TinBasic.WebResponse;
 using basic_api.Models;
+using TinBasic;
 
 namespace basic_api.Controllers
 {
@@ -17,10 +17,10 @@ namespace basic_api.Controllers
         //Update Groups 
         [BasicAuthentication]
         [HttpPost]
-        public WebResponse UpdateGroup([FromBody] Group value, string action)
+        public WebApi.WebResponse UpdateGroup([FromBody] Group value, string action)
         {
 
-            WebResponse r = new WebResponse();
+            WebApi.WebResponse r = new WebApi.WebResponse();
 
             string resp = "";
 
@@ -58,10 +58,10 @@ namespace basic_api.Controllers
         //Get Groups 
         [BasicAuthentication]
         [HttpGet]
-        public WebResponse GetGroup(string by, string val)
+        public WebApi.WebResponse GetGroup(string by, string val)
         {
 
-            WebResponse r = new WebResponse();
+            WebApi.WebResponse r = new WebApi.WebResponse();
 
             r.message = "success";
 

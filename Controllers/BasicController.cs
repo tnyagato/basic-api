@@ -14,7 +14,6 @@ using System.Web.Http.Filters;
 using TinCore;
 using TinBasic;
 using System.Configuration;
-using WebResponse = TinBasic.WebResponse;
 
 namespace basic_api.Controllers
 {
@@ -27,10 +26,10 @@ namespace basic_api.Controllers
         //Get User 
         [BasicAuthentication]
         [HttpGet]
-        public WebResponse GetUser(string by, string val)
+        public WebApi.WebResponse GetUser(string by, string val)
         {
 
-            WebResponse r = new WebResponse();
+            WebApi.WebResponse r = new WebApi.WebResponse();
 
             r.message = "success";
 
@@ -53,11 +52,11 @@ namespace basic_api.Controllers
 
         //Login
         [HttpPost]
-        public WebResponse Login([FromBody] User value)
+        public WebApi.WebResponse Login([FromBody] User value)
         {
 
 
-            WebResponse thisResponse = new WebResponse();
+            WebApi.WebResponse thisResponse = new WebApi.WebResponse();
 
 
             string resp = basic.LoginProcess(value.userID, value.password);
@@ -100,9 +99,9 @@ namespace basic_api.Controllers
         //Change Password
         [BasicAuthentication]
         [HttpPost]
-        public WebResponse ChangePassword([FromBody] ChangePassword value)
+        public WebApi.WebResponse ChangePassword([FromBody] ChangePassword value)
         {
-            WebResponse thisResponse = new WebResponse();
+            WebApi.WebResponse thisResponse = new WebApi.WebResponse();
 
             string resp = basic.ChangePassword(value.userID, value.currentPassword, value.newPassword, value.confirmPassword);
 
@@ -126,9 +125,9 @@ namespace basic_api.Controllers
         //Change Password Admin
         [BasicAuthentication]
         [HttpPost]
-        public WebResponse ChangePasswordAdmin([FromBody] ChangePassword value)
+        public WebApi.WebResponse ChangePasswordAdmin([FromBody] ChangePassword value)
         {
-            WebResponse thisResponse = new WebResponse();
+            WebApi.WebResponse thisResponse = new WebApi.WebResponse();
 
             string resp = basic.ChangePassword(value.userID, value.currentPassword, value.newPassword, value.confirmPassword, false);
 
@@ -152,9 +151,9 @@ namespace basic_api.Controllers
         //Self Reset
 
         [HttpPost]
-        public WebResponse SelfReset([FromBody] User value)
+        public WebApi.WebResponse SelfReset([FromBody] User value)
         {
-            WebResponse thisResponse = new WebResponse();
+            WebApi.WebResponse thisResponse = new WebApi.WebResponse();
 
 
             DataTable dtProfile = basic.GetProfileByUser(value.userID);
@@ -213,10 +212,10 @@ namespace basic_api.Controllers
         //Update User 
         [BasicAuthentication]
         [HttpPost]
-        public WebResponse UpdateUser([FromBody] User value, string action)
+        public WebApi.WebResponse UpdateUser([FromBody] User value, string action)
         {
 
-            WebResponse r = new WebResponse();
+            WebApi.WebResponse r = new WebApi.WebResponse();
 
             string resp = "";
 
@@ -257,10 +256,10 @@ namespace basic_api.Controllers
         //Update Account 
         [BasicAuthentication]
         [HttpPost]
-        public WebResponse UpdateAccount([FromBody] Account value, string action)
+        public WebApi.WebResponse UpdateAccount([FromBody] Account value, string action)
         {
 
-            WebResponse r = new WebResponse();
+            WebApi.WebResponse r = new WebApi.WebResponse();
 
             string resp = "";
 
@@ -325,10 +324,10 @@ namespace basic_api.Controllers
         //Get Account 
         [BasicAuthentication]
         [HttpGet]
-        public WebResponse GetAccount(string by, string val)
+        public WebApi.WebResponse GetAccount(string by, string val)
         {
 
-            WebResponse r = new WebResponse();
+            WebApi.WebResponse r = new WebApi.WebResponse();
 
             r.message = "success";
 
@@ -349,10 +348,10 @@ namespace basic_api.Controllers
         //Update Profiles
         [BasicAuthentication]
         [HttpPost]
-        public WebResponse UpdateProfile([FromBody] Profile value, string action)
+        public WebApi.WebResponse UpdateProfile([FromBody] Profile value, string action)
         {
 
-            WebResponse r = new WebResponse();
+            WebApi.WebResponse r = new WebApi.WebResponse();
 
             string resp = "";
 
@@ -390,10 +389,10 @@ namespace basic_api.Controllers
         //Get Profiles 
         [BasicAuthentication]
         [HttpGet]
-        public WebResponse GetProfile(string by, string val)
+        public WebApi.WebResponse GetProfile(string by, string val)
         {
 
-            WebResponse r = new WebResponse();
+            WebApi.WebResponse r = new WebApi.WebResponse();
 
             r.message = "success";
 
@@ -474,10 +473,10 @@ namespace basic_api.Controllers
         //Update Roles 
         [BasicAuthentication]
         [HttpPost]
-        public WebResponse UpdateRole([FromBody] Role value, string action)
+        public WebApi.WebResponse UpdateRole([FromBody] Role value, string action)
         {
 
-            WebResponse r = new WebResponse();
+            WebApi.WebResponse r = new WebApi.WebResponse();
 
             string resp = "";
 
@@ -515,10 +514,10 @@ namespace basic_api.Controllers
         //Get Roles 
         [BasicAuthentication]
         [HttpGet]
-        public WebResponse GetRole(string by, string val)
+        public WebApi.WebResponse GetRole(string by, string val)
         {
 
-            WebResponse r = new WebResponse();
+            WebApi.WebResponse r = new WebApi.WebResponse();
 
             r.message = "success";
 
@@ -540,10 +539,10 @@ namespace basic_api.Controllers
         //Get Logs
         [BasicAuthentication]
         [HttpGet]
-        public WebResponse GetLog(string by, string val)
+        public WebApi.WebResponse GetLog(string by, string val)
         {
 
-            WebResponse r = new WebResponse();
+            WebApi.WebResponse r = new WebApi.WebResponse();
 
             r.message = "success";
 
@@ -565,10 +564,10 @@ namespace basic_api.Controllers
         //Update Settings
         [BasicAuthentication]
         [HttpPost]
-        public WebResponse UpdateSetting([FromBody] Setting value, string action)
+        public WebApi.WebResponse UpdateSetting([FromBody] Setting value, string action)
         {
 
-            WebResponse r = new WebResponse();
+            WebApi.WebResponse r = new WebApi.WebResponse();
 
             string resp = "";
 
@@ -606,10 +605,10 @@ namespace basic_api.Controllers
         //Get Settings 
         [BasicAuthentication]
         [HttpGet]
-        public WebResponse GetSetting(string by, string val)
+        public WebApi.WebResponse GetSetting(string by, string val)
         {
 
-            WebResponse r = new WebResponse();
+            WebApi.WebResponse r = new WebApi.WebResponse();
 
             r.message = "success";
 
@@ -640,10 +639,10 @@ namespace basic_api.Controllers
         //Update ApprovalGroups 
         [BasicAuthentication]
         [HttpPost]
-        public WebResponse UpdateApprovalGroup([FromBody] ApprovalGroup value, string action)
+        public WebApi.WebResponse UpdateApprovalGroup([FromBody] ApprovalGroup value, string action)
         {
 
-            WebResponse r = new WebResponse();
+            WebApi.WebResponse r = new WebApi.WebResponse();
 
             string resp = "";
 
@@ -681,10 +680,10 @@ namespace basic_api.Controllers
         //Get ApprovalGroups 
         [BasicAuthentication]
         [HttpGet]
-        public WebResponse GetApprovalGroup(string by, string val)
+        public WebApi.WebResponse GetApprovalGroup(string by, string val)
         {
 
-            WebResponse r = new WebResponse();
+            WebApi.WebResponse r = new WebApi.WebResponse();
 
             r.message = "success";
 
@@ -719,10 +718,10 @@ namespace basic_api.Controllers
         //Update ApprovalRoles 
         [BasicAuthentication]
         [HttpPost]
-        public WebResponse UpdateApprovalRole([FromBody] ApprovalRole value, string action)
+        public WebApi.WebResponse UpdateApprovalRole([FromBody] ApprovalRole value, string action)
         {
 
-            WebResponse r = new WebResponse();
+            WebApi.WebResponse r = new WebApi.WebResponse();
 
             string resp = "";
 
@@ -760,10 +759,10 @@ namespace basic_api.Controllers
         //Get ApprovalRoles 
         [BasicAuthentication]
         [HttpGet]
-        public WebResponse GetApprovalRole(string by, string val)
+        public WebApi.WebResponse GetApprovalRole(string by, string val)
         {
 
-            WebResponse r = new WebResponse();
+            WebApi.WebResponse r = new WebApi.WebResponse();
 
             r.message = "success";
 
