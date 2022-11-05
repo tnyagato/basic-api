@@ -14,9 +14,11 @@ using System.Web.Http.Filters;
 using TinCore;
 using TinBasic;
 using System.Configuration;
+using System.Web.Http.Description;
 
 namespace basic_api.Controllers
 {
+    [ApiExplorerSettings(IgnoreApi = true)]
     [EnableCors(origins: "*", headers: "*", methods: "*")]
     public class BasicController : ApiController
     {
